@@ -175,6 +175,7 @@ bool TMatrix<ValType>::operator==(const TMatrix<ValType> &mt) const
 template <class ValType> // сравнение
 bool TMatrix<ValType>::operator!=(const TMatrix<ValType> &mt) const
 {
+    return true;
 } /*-------------------------------------------------------------------------*/
 
 template <class ValType> // присваивание
