@@ -11,21 +11,36 @@
 
 void main()
 {
-  TMatrix<int> a(5), b(5), c(5);
-  int i, j;
+    try {
+        TMatrix<int> a(5), b(5), c(5);
+        int i, j;
 
-  setlocale(LC_ALL, "Russian");
-  cout << "Тестирование программ поддержки представления треугольных матриц"
-    << endl;
-  for (i = 0; i < 5; i++)
-    for (j = i; j < 5; j++ )
+        setlocale(LC_ALL, "Russian");
+        cout << "Тестирование программ поддержки представления треугольных матриц"
+            << endl;
+        for (i = 0; i < 5; i++)
+            for (j = i; j < 5; j++)
+            {
+                a[i][j] = i * 10 + j;
+                b[i][j] = (i * 10 + j) * 100;
+            }
+        c = a + b;
+        cout << "Matrix a = " << endl << a << endl;
+        cout << "Matrix b = " << endl << b << endl;
+        cout << "Matrix c = a + b" << endl << c << endl; }
+    catch (int i)
     {
-      a[i][j] =  i * 10 + j;
-      b[i][j] = (i * 10 + j) * 100;
+        cout << endl << "Неправильный индекс элемента/размер массива: " << i << endl;
     }
-  c = a + b;
-  cout << "Matrix a = " << endl << a << endl;
-  cout << "Matrix b = " << endl << b << endl;
-  cout << "Matrix c = a + b" << endl << c << endl;
+
+    catch (const char* str)
+    {
+        cout << endl << str << endl;
+    }
+
+    catch (...)
+    {
+        cout << endl << "Упс, что-то пошло не так" << endl;
+    }
 }
 //---------------------------------------------------------------------------
