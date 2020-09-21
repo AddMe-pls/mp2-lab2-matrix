@@ -9,6 +9,7 @@
 #define __TMATRIX_H__
 
 #include <iostream>
+#include <locale.h>
 
 using namespace std;
 
@@ -91,9 +92,9 @@ TVector<ValType>::~TVector()
 template <class ValType> // доступ
 ValType& TVector<ValType>::operator[](int pos)
 {
-    if (pos < 0 || pos >= Size)
+    if (pos < 0 || pos >= Size || pos < StartIndex || pos-StartIndex>=size)
         throw index;
-    return pVector[i];
+    return pVector[pos-StartIndex];
 } /*-------------------------------------------------------------------------*/
 
 template <class ValType> // сравнение
