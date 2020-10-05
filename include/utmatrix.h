@@ -92,8 +92,8 @@ template <class ValType> // доступ
 ValType& TVector<ValType>::operator[](int pos)
 {
     if (pos < 0 || pos >= Size)
-        throw index;
-    return pVector[i];
+        throw Size;
+    return pVector[pos];
 } /*-------------------------------------------------------------------------*/
 
 template <class ValType> // сравнение
@@ -233,8 +233,11 @@ public:
 template <class ValType>
 TMatrix<ValType>::TMatrix(int s): TVector<TVector<ValType> >(s)
 {
-    Size = 10;
-    pMatrix = new TVector <ValType>[size];
+    for (int i = 0; i < Size; i++)
+    {
+        TVector<ValType> tmp(s - i, i);
+        pVector[i] = tmp;
+    }
 } /*-------------------------------------------------------------------------*/
 
 template <class ValType> // конструктор копирования
@@ -275,12 +278,12 @@ TMatrix<ValType>& TMatrix<ValType>::operator=(const TMatrix<ValType> &mt)
     {
         delete[]pVector;
         Size = mt.Size;
-        pVector = new TVector <Tvector<ValType>>[mt.Size];
+        pVector = new TVector <ValType>[mt.Size];
     }
-    for (int i = 0; i < Size; i++)
+    for (int i = 0; i < Size; i++) {
         pVector[i] = mt.pVector[i];
-    return *this;
     }
+    return *this;
 } /*-------------------------------------------------------------------------*/
 
 template <class ValType> // сложение
