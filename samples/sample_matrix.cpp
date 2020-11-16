@@ -12,8 +12,8 @@
 
 void main()
 {
-    setlocale(LC_ALL, "Russian");
-  //  try {
+  //  setlocale(LC_ALL, "Russian");
+  /*  try {
         TMatrix<int> a(5), b(5), c(5);
         int i, j;
 
@@ -28,10 +28,10 @@ void main()
           c = a + b;
           cout << "Matrix a = " << endl << a << endl;
           cout << "Matrix b = " << endl << b << endl;
-          cout << "Matrix c = a + b" << endl << c << endl;
-       // TVector<int> a(5), b(5), c;
-       //c = a + b;
-        //cout << c;
+          cout << "Matrix c = a + b" << endl << c << endl;*/
+        TVector<int> a(5), b(5), c;
+       c = a + b;
+        cout << c;
   //  }
   /*  catch (int i)
     {
